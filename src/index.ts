@@ -1,4 +1,4 @@
-import { rapidSearch, RapidSearchRet } from './rapid-search'
+import { rapidSearch, RapidSearchRet, fragmentSearch } from './rapid-search'
 import { authorize } from './authorize'
 import { multiInfo, ExampleMultiInfoResponse } from './multi-info'
 import * as dayjs from 'dayjs'
@@ -38,6 +38,20 @@ export class Opten {
       if (!isRetry) {
         delete this.token
         return this.rapidSearch(query, true)
+      } else {
+        throw err
+      }
+    }
+  }
+
+  async fragmentSearch(query: string, isRetry = false): Promise<RapidSearchRet> {
+    const token = await this.getToken()
+    try {
+      return fragmentSearch(query, token)
+    } catch (err) {
+      if (!isRetry) {
+        delete this.token
+        return this.fragmentSearch(query, true)
       } else {
         throw err
       }

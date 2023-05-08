@@ -11,7 +11,7 @@
     "test:dev": "npm run test:no-spec | tap-spec",
     "test:no-spec": "NODE_ENV=test ts-node --files node_modules/tape/bin/tape test/**/*.test.ts",
     "test:coverage": "nyc --extension .ts npm run test:no-spec | tap-spec && nyc report --reporter=text-lcov > coverage.lcov",
-    "build": "npx typescript --project tsconfig.build.json && cp -r ./src/xml ./dist/"
+    "build": "node_modules/.bin/tsc --project tsconfig.build.json && cp -r ./src/xml ./dist/"
   },
   "author": "",
   "license": "ISC",

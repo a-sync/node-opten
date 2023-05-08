@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+  xmlns:auth="urn://opten/soap/auth">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <auth:Authorize>
+      <auth:Name>{{=it.username}}</auth:Name>
+      <auth:Password>{{=it.password}}</auth:Password>
+    </auth:Authorize>
+  </soapenv:Body>
+</soapenv:Envelope>

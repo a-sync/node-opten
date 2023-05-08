@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:uniq="urn://opten/soap/cegtar/unique">
+    <soapenv:Header/>
+    <soapenv:Body>
+    <uniq:FragmentSearch>
+        <uniq:Token>{{=it.token}}</uniq:Token>
+        <uniq:Nev>{{=it.nev}}</uniq:Nev>
+        <uniq:IRSZ></uniq:IRSZ>
+        <uniq:Telepules></uniq:Telepules>
+        <uniq:Cim></uniq:Cim>
+        <uniq:Cjsz></uniq:Cjsz>
+        <uniq:Asz></uniq:Asz>
+        <uniq:Nysz></uniq:Nysz>
+    </uniq:FragmentSearch>
+    </soapenv:Body>
+</soapenv:Envelope>

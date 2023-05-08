@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+  xmlns:uniq="urn://opten/soap/cegtar/unique">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <uniq:MultiInfo>
+      <uniq:Token>{{=it.token}}</uniq:Token>
+      <!--You have a CHOICE of the next 3 items at this level-->
+      <uniq:FirmTaxNo>{{=it.firmTaxNo}}</uniq:FirmTaxNo>
+      <!-- <uniq:FirmRegNo>?</uniq:FirmRegNo> -->
+      <!-- <uniq:PIR>?</uniq:PIR> -->
+      <!--Optional:-->
+      <!-- <uniq:RFields>?</uniq:RFields> -->
+      <!--Optional:-->
+      <!-- <uniq:XFields>?</uniq:XFields> -->
+    </uniq:MultiInfo>
+  </soapenv:Body>
+</soapenv:Envelope>

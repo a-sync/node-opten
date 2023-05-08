@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+  xmlns:uniq="urn://opten/soap/cegtar/unique">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <uniq:RapidSearch>
+      <uniq:Token>{{=it.token}}</uniq:Token>
+      <uniq:keresett>{{=it.keresett}}</uniq:keresett>
+    </uniq:RapidSearch>
+  </soapenv:Body>
+</soapenv:Envelope>

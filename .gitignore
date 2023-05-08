@@ -1,25 +1,3 @@
-node_modules
-build
-################################################
-###############  .gitignore   ##################
-################################################
-
-
-################################################
-# Sublime
-################################################
-sftp-config.json
-*.sublime-project
-version.json
-
-default.etcd
-
-
-
-
-################################################
-# Node.js / NPM
-################################################
 build
 lib-cov
 *.seed
@@ -30,26 +8,17 @@ npm-debug.log
 .node_history
 node_modules
 *.csv
-
-
-
-
-################################################
-# Miscellaneous
-################################################
-
 *~
 *#
 .DS_STORE
 .netbeans
 nbproject
 .idea
-
 *.aes
 dockercfg
 *.decrypt
 coverage
-dist
+# dist
 .build/*
 .nyc_output
 environment
@@ -63,6 +32,3 @@ ormconfig.json
 *.dump
 coverage.lcov
 local
-
-#do not ignore:
-!.build/.gitkeep

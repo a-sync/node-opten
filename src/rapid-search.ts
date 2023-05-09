@@ -119,9 +119,13 @@ export async function fragmentSearch(query: string, token?: string): Promise<Rap
     );
 
     const parsed: RapidSearchResponse = await parseXml(response);
-    const results = parsed['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0][
-        'ns1:RapidSearchResponse'
-    ][0]['ns1:Lista'][0]['ns1:RapidSearchResponseItem'].map(el => {
+
+    const resArray = parsed['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0]['ns1:RapidSearchResponse'][0]['ns1:Lista'][0]['ns1:RapidSearchResponseItem'];
+    if (resArray === undefined || !Array.isArray(resArray) || resArray.length === 0) {
+        return [];
+    }
+
+    return resArray.map(el => {
         return {
             name: el['ns1:Name'][0],
             address: {
@@ -133,6 +137,4 @@ export async function fragmentSearch(query: string, token?: string): Promise<Rap
             shortTaxNumber: el['ns1:ShortTaxNumber'][0]
         };
     });
-
-    return results;
 }

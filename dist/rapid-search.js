@@ -38,7 +38,11 @@ async function fragmentSearch(query, token) {
         headers: { 'Content-Type': 'text/xml;charset=UTF-8' }
     });
     const parsed = await parseXml(response);
-    const results = parsed['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0]['ns1:RapidSearchResponse'][0]['ns1:Lista'][0]['ns1:RapidSearchResponseItem'].map(el => {
+    const resArray = parsed['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0]['ns1:RapidSearchResponse'][0]['ns1:Lista'][0]['ns1:RapidSearchResponseItem'];
+    if (resArray === undefined || !Array.isArray(resArray) || resArray.length === 0) {
+        return [];
+    }
+    return resArray.map(el => {
         return {
             name: el['ns1:Name'][0],
             address: {
@@ -50,6 +54,5 @@ async function fragmentSearch(query, token) {
             shortTaxNumber: el['ns1:ShortTaxNumber'][0]
         };
     });
-    return results;
 }
 exports.fragmentSearch = fragmentSearch;

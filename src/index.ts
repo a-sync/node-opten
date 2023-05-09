@@ -1,6 +1,7 @@
 import { rapidSearch, RapidSearchRet, fragmentSearch } from './rapid-search'
 import { authorize } from './authorize'
 import { multiInfo, ExampleMultiInfoResponse } from './multi-info'
+import { encodeXML } from 'entities'
 import * as dayjs from 'dayjs'
 
 export interface OptenOptions {
@@ -33,7 +34,7 @@ export class Opten {
   async rapidSearch(query: string, isRetry = false): Promise<RapidSearchRet> {
     const token = await this.getToken()
     try {
-      return rapidSearch(query, token)
+      return rapidSearch(encodeXML(query), token)
     } catch (err) {
       if (!isRetry) {
         delete this.token
@@ -47,7 +48,7 @@ export class Opten {
   async fragmentSearch(query: string, isRetry = false): Promise<RapidSearchRet> {
     const token = await this.getToken()
     try {
-      return fragmentSearch(query, token)
+      return fragmentSearch(encodeXML(query), token)
     } catch (err) {
       if (!isRetry) {
         delete this.token

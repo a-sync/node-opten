@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const rapid_search_1 = require("./rapid-search");
 const authorize_1 = require("./authorize");
 const multi_info_1 = require("./multi-info");
+const entities_1 = require("entities");
 const dayjs = require("dayjs");
 class Opten {
     constructor(options) {
@@ -25,7 +26,7 @@ class Opten {
     async rapidSearch(query, isRetry = false) {
         const token = await this.getToken();
         try {
-            return rapid_search_1.rapidSearch(query, token);
+            return rapid_search_1.rapidSearch(entities_1.encodeXML(query), token);
         }
         catch (err) {
             if (!isRetry) {
@@ -40,7 +41,7 @@ class Opten {
     async fragmentSearch(query, isRetry = false) {
         const token = await this.getToken();
         try {
-            return rapid_search_1.fragmentSearch(query, token);
+            return rapid_search_1.fragmentSearch(entities_1.encodeXML(query), token);
         }
         catch (err) {
             if (!isRetry) {

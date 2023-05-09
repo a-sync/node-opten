@@ -21,9 +21,15 @@ async function soapRequest(url, xml, axiosConfig) {
             const errorResp = await xml_1.parseXml(e.response.data);
             console.error('Opten error request', JSON.stringify(xml));
             console.error('Opten error response', JSON.stringify(errorResp));
-            const newErr = new OptenError(`Opten Error: ${errorResp['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0]['SOAP-ENV:Fault'][0].faultstring}`);
-            newErr.request = xml;
-            throw newErr;
+            if (errorResp === null) {
+                console.error('invalid response', String(e.response.data));
+                throw new Error('invalid opten soap error response');
+            }
+            else {
+                const newErr = new OptenError(`Opten Error: ${errorResp['SOAP-ENV:Envelope']['SOAP-ENV:Body'][0]['SOAP-ENV:Fault'][0].faultstring}`);
+                newErr.request = xml;
+                throw newErr;
+            }
         }
         else {
             console.error(`SOAP FAIL: ${e}`);

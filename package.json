@@ -1,6 +1,6 @@
 {
   "name": "opten",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
   "files": [
